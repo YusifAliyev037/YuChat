@@ -10,7 +10,7 @@ function InputMessage() {
       <IoIosAttach />
         <input type="file" style={{display:"none"}} id="file" />
         <label htmlFor="file">
-        <CiImageOn />
+        <CiImageOn  />
         </label>
         <button>Send</button>
       </div>
