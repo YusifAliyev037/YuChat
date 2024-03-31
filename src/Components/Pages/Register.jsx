@@ -4,9 +4,11 @@ import { auth, db, storage } from '../Service/firebase';
 import { CiImageOn } from "react-icons/ci";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from 'firebase/firestore'; // Importing Firestore related functions
+import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
     const [err, setErr] = useState(false);
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,8 +47,11 @@ function Register() {
                             uid: res.user.uid,
                             displayName,
                             email,
+                            password,
                             photoURL: downloadURL
                         });
+                        await setDoc(doc(db, "userChats", res.user.uid), {})
+                        navigate("/")
                     });
                 }
             );
@@ -69,7 +74,7 @@ function Register() {
                     <button type="submit">Sign Up</button>
                     {err && <span>Something went wrong</span>}
                 </form>
-                <p>You already have an account? <a href="/login">Login</a></p>
+                <p>You already have an account? <Link to="/login">Login</Link></p>
             </div>
         </div>
     );
