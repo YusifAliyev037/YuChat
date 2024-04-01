@@ -30,8 +30,9 @@ function Search() {
     e.code === "Enter" && handleSearch();
   };
 
-  const handleSelect = async () => {
+  const handleSelect = async (u) => {
     //check whether the group(chats in firestore) exists, if not create
+    dispatch({typeof:"CHANGE_USER", payload:u})
     const combinedId =
       currentUser.uid > user.uid
         ? currentUser.uid + user.uid
@@ -81,7 +82,7 @@ function Search() {
       </div>
       {err && <span>User Not Found!</span>}
       {user && (
-        <div className="userchat" onClick={handleSelect}>
+        <div className="userchat" onClick={()=>handleSelect(chat[1].userInfo)}>
           <img src={user.photoURL} alt="" />
           <div className="userchatinfo">
             <span>{user.displayName}</span>
