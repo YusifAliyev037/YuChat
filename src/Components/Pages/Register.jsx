@@ -40,6 +40,7 @@ function Register() {
               uid: res.user.uid,
               displayName,
               email,
+              password,
               photoURL: downloadURL,
             });
 
