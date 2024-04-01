@@ -6,7 +6,7 @@ import { ChatContext } from '../../Context/ChatContext';
 import { Timestamp, arrayUnion, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { db, storage } from '../../Service/firebase';
 import { v4 as uuid } from 'uuid';
-import { ref, uploadBytesResumable } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 
 function InputMessage() {
   const [text, setText] = useState("");
@@ -23,6 +23,7 @@ function InputMessage() {
 
       uploadTask.on(
         (error) => {
+          //TODO:Handle Error
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -65,7 +66,7 @@ function InputMessage() {
 
     setText("");
     setImg(null);
-  }
+  };
   return (
     <div className='inputmessage'>
       <input 
