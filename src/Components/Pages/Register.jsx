@@ -18,31 +18,23 @@ function Register() {
         const file = e.target.elements.file.files[0];
 
         try {
-            // Create user with email and password
             const res = await createUserWithEmailAndPassword(auth, email, password);
 
-            // Create a reference to the user's storage location using their display name
             const storageRef = ref(storage, displayName);
 
-            // Upload the file to storage
             const uploadTask = uploadBytesResumable(storageRef, file);
 
-            // Handle errors during upload
             uploadTask.on(
                 (error) => {
                     setErr(true);
                 },
                 () => {
-                    // Once upload is complete, get the download URL
                     getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-                        // Update user profile with display name and profile image URL
                         await updateProfile(res.user, {
                             displayName,
                             photoURL: downloadURL
                         });
 
-                        // Add user data to Firestore
-                        // Here's where you set the document in the 'users' collection
                         await setDoc(doc(db, 'users', res.user.uid), {
                             uid: res.user.uid,
                             displayName,

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updateDoc, where } from "firebase/firestore";
 import { db } from "../../Service/firebase";
 import { AuthContext } from "../../Context/AuthContext";
+import { ChatContext } from '../../Context/ChatContext';
 
 function Search() {
   const [username, setUsername] = useState("");
@@ -9,6 +10,8 @@ function Search() {
   const [err, setErr] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
+  const {dispatch} = useContext(ChatContext)
+
 
   const handleSearch = async () => {
     const q = query(
@@ -32,7 +35,7 @@ function Search() {
 
   const handleSelect = async (u) => {
     //check whether the group(chats in firestore) exists, if not create
-    dispatch({typeof:"CHANGE_USER", payload:u})
+    dispatch({type:"CHANGE_USER", payload:u})
     const combinedId =
       currentUser.uid > user.uid
         ? currentUser.uid + user.uid
