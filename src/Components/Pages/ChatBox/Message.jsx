@@ -23,11 +23,11 @@ import { ChatContext } from '../../Context/ChatContext';
         <span>just now</span>
       </div>
       <div className="messagecontent">
-        <p>{message.text}</p>
-        {message.img && <img 
+        <p className='ptext'>{message.text}</p>
+        <p className='pimage'>{message.img && <img 
         src={message.img} 
         alt="" 
-        />}
+        />}</p>
       </div>
       </div>
   )
