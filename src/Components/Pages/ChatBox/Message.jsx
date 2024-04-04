@@ -25,6 +25,7 @@ import { ChatContext } from '../../Context/ChatContext';
       <div className="messagecontent">
         <p className='ptext'>{message.text}</p>
         <p className='pimage'>{message.img && <img 
+        className='mesimage'
         src={message.img} 
         alt="" 
         />}</p>

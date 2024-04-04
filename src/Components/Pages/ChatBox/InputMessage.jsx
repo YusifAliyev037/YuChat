@@ -11,6 +11,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 function InputMessage() {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
+  const [disable, setDisable] = useState(false)
 
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
@@ -76,17 +77,18 @@ function InputMessage() {
       value={text}
       />
       <div className="send">
-      <IoIosAttach />
+      <IoIosAttach style={{cursor:'pointer'}} />
         <input 
+      
         type="file" 
         style={{display:"none"}} 
         id="file"
         onChange={e=>setImg(e.target.files[0])}
         />
         <label htmlFor="file">
-        <CiImageOn  />
+        <CiImageOn  style={{cursor:'pointer'}} />
         </label>
-        <button onClick={handleSend}>Send</button>
+        <button disabled={disable} onClick={handleSend}>Send</button>
       </div>
     </div>
   )

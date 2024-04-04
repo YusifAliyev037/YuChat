@@ -176,6 +176,18 @@
             justify-content: space-between;
             padding: 10px;
             color: lightgray;
+            .useravatar{
+                width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+            }
+        .userninfo{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
         }
         .chaticons{
             display: flex;
@@ -219,13 +231,19 @@
                 width: 50%;
                } 
 
-               p{
+               .ptext{
                 background-color: #fff;
                 padding: 10px 20px;
                 color: black;
                 border-radius: 0 10px 10px 10px;
                 max-width: max-content;
                } 
+        
+               .mesimage{
+                border-radius: 0 10px 10px 10px;
+                object-fit: cover;
+
+            }
             }
             &.owner{
                 flex-direction: row-reverse;
@@ -234,11 +252,25 @@
                     align-items: flex-end;
                 
             
-                p{
+                .ptext{
                     background-color: yellowgreen;
                     color: #fff;
                     border-radius: 10px 0 10px 10px ;
                 }
+                .pimage{
+                    border-radius: 10px 0 10px 10px ;
+                    justify-content: center;
+                    display: flex;
+                    justify-content: flex-end;
+                    
+                    
+                }
+               .mesimage{
+                border-radius: 10px 0 10px 10px ;
+                object-fit: cover;
+
+            }
+
             }
             }
 
@@ -279,6 +311,7 @@
                     padding: 10px 15px;
                     color: #fff;
                     background-color: yellowgreen;
+                    cursor: pointer;
                 }
                 
             }
