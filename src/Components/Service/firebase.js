@@ -5,8 +5,8 @@ import {getStorage  } from "firebase/storage"
 // TODO: Add SDKs for Firebase products that you want to use
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAyqJZAK_7iIoNj57gakaumhGOaH8ToVx4",
-  authDomain: "yuchat-65fcd.firebaseapp.com",
+  apiKey:import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
   projectId: "yuchat-65fcd",
   storageBucket: "yuchat-65fcd.appspot.com",
   messagingSenderId: "714127113056",
