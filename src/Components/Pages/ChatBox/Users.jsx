@@ -37,7 +37,7 @@ function Users() {
           key={chat[0]}
           onClick={() => handleSelect(chat[1].userInfo)}
         >
-          <img src={chat[1].userInfo?.photoURL || ''} alt="" />
+          <img src={chat[1].userInfo?.photoURL || 'https://www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg'} alt="" />
           <div className="userchatInfo">
             <span>{chat[1].userInfo?.displayName}</span>
             <p>{chat[1].lastMessage?.text}</p>
