@@ -5,17 +5,21 @@ import { CiImageOn } from "react-icons/ci";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from 'firebase/firestore'; // Importing Firestore related functions
 import { Link, useNavigate } from 'react-router-dom';
+import { GoEye } from 'react-icons/go';
+import { GoEyeClosed } from "react-icons/go";
 
 function Register() {
+  const [showPassword, setShowPassword] = useState(false); 
     const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    const displayName = e.target[0].value;
-    const email = e.target[1].value;
+    const displayName = e.target[0].value.trim();
+    const email = e.target[1].value.trim();
     const password = e.target[2].value;
     const file = e.target[3].files[0];
 
@@ -68,7 +72,18 @@ function Register() {
                 <form onSubmit={handleSubmit}>
                     <input type="text" name="displayName" placeholder='Display Name' />
                     <input type="email" name="email" placeholder='Email'/>
-                    <input type="password" name="password" placeholder='Password' />
+                    <input
+          type={showPassword ? 'text' : 'password'}
+          placeholder="Password"
+        />
+        <button
+          className='passwordbutton'
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+        >
+          {showPassword ? <GoEye color='black' /> : <GoEyeClosed color="black" />}
+        </button> 
+                  
                     <input style={{display:"none"}} type="file" id='file' name="file" />
                     <label htmlFor="file"><CiImageOn size={30} /> Add Profile Image</label>
                     <button type="submit">Sign Up</button>
