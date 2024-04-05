@@ -72,17 +72,19 @@ function Register() {
                 <form onSubmit={handleSubmit}>
                     <input type="text" name="displayName" placeholder='Display Name' />
                     <input type="email" name="email" placeholder='Email'/>
+                    <div className="password-input-wrapper">
                     <input
-          type={showPassword ? 'text' : 'password'}
-          placeholder="Password"
-        />
-        <button
-          className='passwordbutton'
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-        >
-          {showPassword ? <GoEye color='black' /> : <GoEyeClosed color="black" />}
-        </button> 
+                      type={showPassword ? 'text' : 'password'}
+                      placeholder="Password"
+                    />
+                    <button
+                      className='passwordbutton'
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? <GoEye color='black'  /> : <GoEyeClosed color="black" /> }  
+                   </button>
+          </div>
                   
                     <input style={{display:"none"}} type="file" id='file' name="file" />
                     <label htmlFor="file"><CiImageOn size={30} /> Add Profile Image</label>
